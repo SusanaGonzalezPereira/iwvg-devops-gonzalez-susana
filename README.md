@@ -2,3 +2,5 @@
 ## Ingeniería Web: Visión General (IWVG) DevOps
 > Este proyecto es una Plantilla de apoyo docente de la asignatura.
 
+### Estado del proyecto:
+[![CI](https://github.com/SusanaGonzalezPereira/iwvg-devops-gonzalez-susana/actions/workflows/ci.yml/badge.svg?branch=develop)](https://github.com/SusanaGonzalezPereira/iwvg-devops-gonzalez-susana/actions/workflows/ci.yml)
