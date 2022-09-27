@@ -1,5 +1,7 @@
 package es.upm.miw.iwvg_devops.code;
 
+import java.util.Objects;
+
 /**
  * Conceptos: Las fracciones propias son aquellas cuyo numerador es menor que el denominador
  * <p>
@@ -59,11 +61,67 @@ public class Fraction {
         return (double) numerator / denominator;
     }
 
+    public boolean isProper() {
+        return this.numerator < this.denominator;
+    }
+
+    public boolean isImproper() {
+        return this.numerator > this.denominator;
+    }
+
+    public boolean isEquivalent(Fraction f) {
+        return this.numerator * f.denominator == f.numerator * this.denominator;
+    }
+
+    public Fraction add(Fraction f) {
+        int newNumerator = (this.numerator * f.denominator) + (f.numerator * this.denominator);
+        int newDenominator = this.denominator * f.denominator;
+        return this.reduce(new Fraction(newNumerator, newDenominator));
+    }
+
+    private Fraction reduce(Fraction f){
+        int greaterCommonDenominator = greaterCommonDenominator(f.numerator, f.denominator);
+        int newNumerator = f.numerator/greaterCommonDenominator;
+        int newDenominator = f.denominator/greaterCommonDenominator;
+        return new Fraction(newNumerator, newDenominator);
+    }
+
+    private int greaterCommonDenominator(int a, int b){
+        if (b==0) return a;
+        return greaterCommonDenominator(b,a%b);
+    }
+
+    public Fraction multiply(Fraction f) {
+        int newNumerator = this.numerator * f.numerator;
+        int newDenominator = this.denominator * f.denominator;
+        return this.reduce(new Fraction(newNumerator, newDenominator));
+    }
+
+    public Fraction divide(Fraction f) {
+        int newNumerator = this.numerator * f.denominator;
+        int newDenominator = this.denominator * f.numerator;
+        return this.reduce(new Fraction(newNumerator, newDenominator));
+    }
+
     @Override
     public String toString() {
         return "Fraction{" +
                 "numerator=" + numerator +
                 ", denominator=" + denominator +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Fraction && equals((Fraction) obj);
+    }
+
+    public boolean equals(Fraction f){
+        return this.numerator == f.numerator && this.denominator ==  f.denominator;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(numerator, denominator);
     }
 }

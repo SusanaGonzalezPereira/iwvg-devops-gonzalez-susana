@@ -3,7 +3,8 @@ package es.upm.miw.iwvg_devops.code;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FractionTest {
 
@@ -52,6 +53,58 @@ public class FractionTest {
     void testToString() {
         String toString = "Fraction{numerator=1, denominator=2}";
         assertEquals(toString, this.fraction.toString());
+    }
+
+    @Test
+    void testFractionIsProper(){
+        assertTrue(this.fraction.isProper());
+    }
+
+    @Test
+    void testFractionIsNotProper(){
+        Fraction f = new Fraction(2,1);
+        assertFalse(f.isProper());
+    }
+
+    @Test
+    void testIsImproper(){
+        Fraction f = new Fraction(2,1);
+        assertTrue(f.isImproper());
+    }
+
+    @Test
+    void testIsNotImproper(){
+        assertFalse(this.fraction.isImproper());
+    }
+
+    @Test
+    void testIsEquivalent() {
+        Fraction equivalent = new Fraction(10,20);
+        assertTrue(this.fraction.isEquivalent(equivalent));
+    }
+
+    @Test
+    void testAddFraction(){
+        Fraction addFraction = new Fraction(1,4);
+        assertEquals(new Fraction(3,4), this.fraction.add(addFraction));
+    }
+
+    @Test
+    void testMultiply(){
+        Fraction addFraction = new Fraction(2,4);
+        assertEquals(new Fraction(1,4), this.fraction.multiply(addFraction));
+    }
+
+    @Test
+    void testDivide(){
+        Fraction addFraction = new Fraction(10,20);
+        assertEquals(new Fraction(1,1), this.fraction.divide(addFraction));
+    }
+
+    @Test
+    void testHashCode(){
+        Fraction equalHashcode = new Fraction(1,2);
+        assertEquals(equalHashcode.hashCode(), this.fraction.hashCode());
     }
 
 }
