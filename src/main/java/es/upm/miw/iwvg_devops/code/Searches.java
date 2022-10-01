@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 public class Searches {
 
-    private final int NAN_INT = 0;
+    private static final int NAN_INT = 0;
 
     public Fraction findFractionAdditionByUserId(String id) {
         return new UsersDatabase().findAll()
