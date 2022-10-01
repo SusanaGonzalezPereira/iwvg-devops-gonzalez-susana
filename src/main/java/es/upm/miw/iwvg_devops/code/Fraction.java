@@ -79,16 +79,20 @@ public class Fraction {
         return this.reduce(new Fraction(newNumerator, newDenominator));
     }
 
-    private Fraction reduce(Fraction f){
+    private Fraction reduce(Fraction f) {
         int greaterCommonDenominator = greaterCommonDenominator(f.numerator, f.denominator);
-        int newNumerator = f.numerator/greaterCommonDenominator;
-        int newDenominator = f.denominator/greaterCommonDenominator;
+        if (f.denominator == 0) {
+            final int NAN_INT = 0;
+            return new Fraction(NAN_INT, NAN_INT);
+        }
+        int newNumerator = f.numerator / greaterCommonDenominator;
+        int newDenominator = f.denominator / greaterCommonDenominator;
         return new Fraction(newNumerator, newDenominator);
     }
 
-    private int greaterCommonDenominator(int a, int b){
-        if (b==0) return a;
-        return greaterCommonDenominator(b,a%b);
+    private int greaterCommonDenominator(int a, int b) {
+        if (b == 0) return a;
+        return greaterCommonDenominator(b, a % b);
     }
 
     public Fraction multiply(Fraction f) {
@@ -106,8 +110,8 @@ public class Fraction {
     @Override
     public String toString() {
         return "Fraction{" +
-                "numerator=" + numerator +
-                ", denominator=" + denominator +
+                "numerator=" + this.numerator +
+                ", denominator=" + this.denominator +
                 '}';
     }
 
@@ -116,8 +120,8 @@ public class Fraction {
         return obj instanceof Fraction && equals((Fraction) obj);
     }
 
-    public boolean equals(Fraction f){
-        return this.numerator == f.numerator && this.denominator ==  f.denominator;
+    public boolean equals(Fraction f) {
+        return this.numerator == f.numerator && this.denominator == f.denominator;
     }
 
     @Override
