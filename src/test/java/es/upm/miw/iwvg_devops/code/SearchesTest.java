@@ -11,24 +11,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class SearchesTest {
 
     @Test
-    void testFindUserFamilyNameByUserNameDistinct() {
-        assertEquals(List.of("Torres"), new Searches().findUserFamilyNameByUserNameDistinct("Paula")
-                .collect(Collectors.toList()));
-    }
-
-    @Test
-    void testFindUserFractionNumeratorByFamilyName() {
-        assertEquals(List.of(2, 4, 0, 1, 1), new Searches().findFractionNumeratorByUserFamilyName("Torres")
-                .collect(Collectors.toList()));
-    }
-
-    @Test
-    void testFindFamilyNameByFractionDenominator() {
-        assertEquals(List.of("López", "Torres"), new Searches().findUserFamilyNameByFractionDenominator(2)
-                .collect(Collectors.toList()));
-    }
-
-    @Test
     void testFindFractionAdditionByUserId() {
         assertEquals(new Fraction(3,1),new Searches().findFractionAdditionByUserId("1") );
         assertEquals(new Fraction(109,30),new Searches().findFractionAdditionByUserId("2") );
