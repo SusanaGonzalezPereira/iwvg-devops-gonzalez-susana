@@ -36,4 +36,15 @@ public class Searches {
                 .distinct();
     }
 
+    public Fraction findFractionSubtractionByUserName(String name) {
+        return new UsersDatabase().findAll()
+                .filter(user -> name.equals(user.getName()))
+                .flatMap(user -> user.getFractions().stream()
+                        .filter(Objects::nonNull)
+                )
+                .map( a -> new Fraction(a.getNumerator() * (-1), a.getDenominator() ))
+                .reduce(Fraction::add)
+                .orElse(new Fraction(NAN_INT,NAN_INT));
+    }
+
 }

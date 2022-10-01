@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class SearchesTest {
 
-    private final int NAN_INT = 0;
+    private static final int NAN_INT = 0;
 
     @Test
     void testFindFractionAdditionByUserId() {
@@ -31,5 +31,13 @@ class SearchesTest {
     @Test
     void testFindUserFamilyNameByAllNegativeSignFractionDistinct() {
         assertEquals(0, new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct().count());
+    }
+
+    @Test
+    void testFindFractionSubtractionByUserName() {
+        assertEquals(new Fraction(-109, 30), new Searches().findFractionSubtractionByUserName("Ana"));
+        assertEquals(new Fraction(21, -5), new Searches().findFractionSubtractionByUserName("Oscar"));
+        assertEquals(new Fraction(NAN_INT, NAN_INT), new Searches().findFractionSubtractionByUserName("Paula"));
+        assertEquals(new Fraction(0, 1), new Searches().findFractionSubtractionByUserName("Antonio"));
     }
 }
