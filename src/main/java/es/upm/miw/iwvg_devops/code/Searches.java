@@ -5,6 +5,8 @@ import java.util.stream.Stream;
 
 public class Searches {
 
+    private final int NAN_INT = 0;
+
     public Fraction findFractionAdditionByUserId(String id) {
         return new UsersDatabase().findAll()
                 .filter(user -> id.equals(user.getId()))
@@ -12,7 +14,7 @@ public class Searches {
                         .filter(Objects::nonNull)
                 )
                 .reduce(Fraction::add)
-                .orElse(new Fraction(0, 1));
+                .orElse(new Fraction(NAN_INT, NAN_INT));
     }
 
     public Fraction findFirstProperFractionByUserId(String id) {
@@ -22,7 +24,7 @@ public class Searches {
                         .filter(Fraction::isProper)
                 )
                 .findFirst()
-                .orElse(new Fraction(0, 1));
+                .orElse(new Fraction(NAN_INT, NAN_INT));
     }
 
     public Stream<String> findUserFamilyNameByAllNegativeSignFractionDistinct() {
