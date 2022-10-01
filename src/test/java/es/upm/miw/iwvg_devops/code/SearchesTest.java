@@ -23,4 +23,9 @@ class SearchesTest {
         assertEquals(new Fraction(0, 1), new Searches().findFirstProperFractionByUserId("4"));
         assertEquals(new Fraction(0, 1), new Searches().findFirstProperFractionByUserId("5"));
     }
+
+    @Test
+    void findUserFamilyNameByAllNegativeSignFractionDistinct() {
+        assertEquals(0, new Searches().findUserFamilyNameByAllNegativeSignFractionDistinct().count());
+    }
 }
