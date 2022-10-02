@@ -4,15 +4,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class FractionTest {
+class FractionTest {
 
     private Fraction fraction;
 
     @BeforeEach
     void setUp() {
-        this.fraction = new Fraction(1,2);
+        this.fraction = new Fraction(1, 2);
     }
 
     @Test
@@ -56,54 +55,54 @@ public class FractionTest {
     }
 
     @Test
-    void testFractionIsProper(){
+    void testFractionIsProper() {
         assertTrue(this.fraction.isProper());
     }
 
     @Test
-    void testFractionIsNotProper(){
-        Fraction f = new Fraction(2,1);
+    void testFractionIsNotProper() {
+        Fraction f = new Fraction(2, 1);
         assertFalse(f.isProper());
     }
 
     @Test
-    void testIsImproper(){
-        Fraction f = new Fraction(2,1);
+    void testIsImproper() {
+        Fraction f = new Fraction(2, 1);
         assertTrue(f.isImproper());
     }
 
     @Test
-    void testIsNotImproper(){
+    void testIsNotImproper() {
         assertFalse(this.fraction.isImproper());
     }
 
     @Test
     void testIsEquivalent() {
-        Fraction equivalent = new Fraction(10,20);
+        Fraction equivalent = new Fraction(10, 20);
         assertTrue(this.fraction.isEquivalent(equivalent));
     }
 
     @Test
-    void testAddFraction(){
-        Fraction addFraction = new Fraction(1,4);
-        assertEquals(new Fraction(3,4), this.fraction.add(addFraction));
+    void testAddFraction() {
+        Fraction addFraction = new Fraction(1, 4);
+        assertEquals(new Fraction(3, 4), this.fraction.add(addFraction));
     }
 
     @Test
-    void testMultiply(){
-        Fraction addFraction = new Fraction(2,4);
-        assertEquals(new Fraction(1,4), this.fraction.multiply(addFraction));
+    void testMultiply() {
+        Fraction addFraction = new Fraction(2, 4);
+        assertEquals(new Fraction(1, 4), this.fraction.multiply(addFraction));
     }
 
     @Test
-    void testDivide(){
-        Fraction addFraction = new Fraction(10,20);
-        assertEquals(new Fraction(1,1), this.fraction.divide(addFraction));
+    void testDivide() {
+        Fraction addFraction = new Fraction(10, 20);
+        assertEquals(new Fraction(1, 1), this.fraction.divide(addFraction));
     }
 
     @Test
-    void testHashCode(){
-        Fraction equalHashcode = new Fraction(1,2);
+    void testHashCode() {
+        Fraction equalHashcode = new Fraction(1, 2);
         assertEquals(equalHashcode.hashCode(), this.fraction.hashCode());
     }
 
