@@ -28,6 +28,7 @@ public class Searches {
     }
 
     public Stream<String> findUserFamilyNameByAllNegativeSignFractionDistinct() {
+
         return new UsersDatabase().findAll()
                 .filter(user -> user.getFractions().stream()
                         .allMatch(fraction -> fraction.getDenominator() < 0 ^ fraction.getNumerator() < 0)
